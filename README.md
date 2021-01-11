@@ -6,7 +6,7 @@
 
 ### Iniciando o serviço (raiz da aplicação)
 
-`json-server db.json`
+`json-server db.json --port 3031`
 
 # Getting Started with Create React App
 
