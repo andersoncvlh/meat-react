@@ -1,3 +1,13 @@
+## Iniciando o Backend
+
+### Instalando o json-server
+
+`npm install -g json-server`
+
+### Iniciando o serviço (raiz da aplicação)
+
+`json-server db.json`
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
