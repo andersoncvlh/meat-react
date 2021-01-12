@@ -1,9 +1,9 @@
 import api from "../config/api.config";
 
+const url = process.env.REACT_APP_API_URL;
+
 const getRestaurantMenu = async (id) => {
-  const response = await api.get(
-    `http://localhost:3001/menu?restaurantId=${id}`
-  );
+  const response = await api.get(`${url}/menu?restaurantId=${id}`);
   return response.data;
 };
 

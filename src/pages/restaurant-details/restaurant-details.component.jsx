@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import TabPanel from '@material-ui/lab/TabPanel';
 import { TabContext, TabList } from '@material-ui/lab';
 import { getByIdRestaurant } from '../../services/restaurant.service';
+import listReview from '../../services/review.service';
 import {getRestaurantMenu} from '../../services/menu.service.js';
 import useRestaurantDetailStyles from './restaurant-details.style';
 
@@ -11,8 +12,8 @@ export default function RestaurantDetails({ match }) {
   const [value, setValue] = React.useState("0")
   const [restaurant, setRestaurant] = React.useState()
   const [products, setMenu] = React.useState()
+  const [review, setReview] = React.useState()
   
-
 
   function handleChange(event, newValue) {
     setValue(newValue)
@@ -28,9 +29,15 @@ export default function RestaurantDetails({ match }) {
       setMenu(products)
   }
 
+  const getListReview = async (id) => {
+      const list = await listReview(id)
+      setReview(list)
+  }
+
   useEffect(() => {
     getRestaurant(restaurantId)
     showRestaurantMenu(restaurantId)
+    getListReview(restaurantId)
   }, [restaurantId])
 
   const classes = useRestaurantDetailStyles()
@@ -84,7 +91,15 @@ export default function RestaurantDetails({ match }) {
         </TabPanel>
 
         <TabPanel value="1">
-          Avaliações
+          <ul>
+            {review?.map((r) => {
+              return (
+                <li>
+                  {r.name} | { r.rating } | {r.comments}
+                </li>
+              )
+          })}
+          </ul>
         </TabPanel>
       </TabContext>
       
