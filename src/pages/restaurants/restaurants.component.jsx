@@ -1,11 +1,11 @@
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { listRestaurants } from '../../services/restaurant.service';
 import { useEffect, useState } from 'react'
 import useRestaurantsStyles from './restaurants.styles';
+import { Link } from 'react-router-dom';
 
 export default function Restaurants() {
   const classes = useRestaurantsStyles();
@@ -40,7 +40,7 @@ export default function Restaurants() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Saiba mais</Button>
+              <Link to={`restaurantes-detalhe/${restaurant.id}`} >Saiba mais</Link>
             </CardActions>
           </Card>
         )

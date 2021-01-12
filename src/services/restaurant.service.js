@@ -5,4 +5,9 @@ const listRestaurants = async () => {
   return response.data;
 };
 
-export { listRestaurants };
+const getByIdRestaurant = async (id) => {
+  const response = await api.get(`http://localhost:3001/restaurants/${id}`);
+  return response.data;
+};
+
+export { listRestaurants, getByIdRestaurant };
